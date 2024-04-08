@@ -133,7 +133,7 @@ func SendEmailVerification(c *gin.Context) {
 	if common.EmailDomainRestrictionEnabled {
 		allowed := false
 		for _, domain := range common.EmailDomainWhitelist {
-			if domainPart == domain {
+			if strings.HasSuffix(domainPart, domain) {
 				allowed = true
 				break
 			}
