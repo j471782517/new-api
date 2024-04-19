@@ -8,7 +8,7 @@ import (
 	"one-api/constant"
 	"one-api/model"
 	"strings"
-	"regexp"
+
 
 	"github.com/gin-gonic/gin"
 )
@@ -134,7 +134,7 @@ func SendEmailVerification(c *gin.Context) {
 	if common.EmailDomainRestrictionEnabled {
 		allowed := false
 		for _, domain := range common.EmailDomainWhitelist {
-			if strings.HasSuffix(email, "." + domain) {
+			if strings.HasSuffix(domainPart, "." + domain) {
 				allowed = true
 				break
 			}
